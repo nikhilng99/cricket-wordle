@@ -1,0 +1,59 @@
+.guess-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin: 20px 0;
+}
+
+.guess-row {
+  display: flex;
+  gap: 5px;
+}
+
+.guess-row.header {
+  font-weight: bold;
+  text-transform: uppercase;
+  background-color: #f0f0f0;
+}
+
+.guess-cell {
+  padding: 5px;
+  min-width: 60px;
+  text-align: center;
+  border: 1px solid #ccc;
+  color: white;
+}
+
+.born-cell {
+  font-size: 0.9rem;
+}
+
+.total-cell {
+  font-size: 0.9rem;
+}
+
+.flip {
+  transition: all 0.3s ease;
+}
+
+/* Wordle-style cells */
+.green {
+  background-color: #6aaa64;
+}
+
+.yellow {
+  background-color: #c9b458;
+}
+
+.grey {
+  background-color: #787c7e;
+}
+
+/* Hint arrows */
+.orange-up,
+.orange-down {
+  color: orange !important;
+  font-weight: bold;
+  display: inline-block;
+  margin-left: 2px;
+}
