@@ -491,7 +491,7 @@ players.push(
     born: "1999-09-25",
     battingHand: "Right",
     totalMatches: 45,
-    currentTeam: "Mumbai Indians",
+    currentTeam: "MI",
     image: "",
   },
   {
@@ -502,7 +502,7 @@ players.push(
     born: "2000-04-21",
     battingHand: "Right",
     totalMatches: 55,
-    currentTeam: "Delhi Capitals",
+    currentTeam: "DC",
     image: "",
   },
   {
@@ -524,7 +524,7 @@ players.push(
     born: "1994-02-18",
     battingHand: "Right",
     totalMatches: 35,
-    currentTeam: "UP Warriorz",
+    currentTeam: "UPW",
     image: "",
   },
   {
@@ -535,7 +535,7 @@ players.push(
     born: "2000-11-01",
     battingHand: "Left",
     totalMatches: 25,
-    currentTeam: "Mumbai Indians",
+    currentTeam: "MI",
     image: "",
   },
   {
@@ -546,7 +546,7 @@ players.push(
     born: "1998-06-21",
     battingHand: "Right",
     totalMatches: 35,
-    currentTeam: "Gujarat Giants",
+    currentTeam: "GG",
     image: "",
   },
   {
@@ -557,7 +557,7 @@ players.push(
     born: "1994-06-18",
     battingHand: "Right",
     totalMatches: 28,
-    currentTeam: "UP Warriorz",
+    currentTeam: "UPW",
     image: "",
   },
   {
@@ -813,7 +813,7 @@ players.push(
     born: "1989-05-12",
     battingHand: "Right",
     totalMatches: 120,
-    currentTeam: "Delhi Capitals",
+    currentTeam: "DC",
     image: "",
   },
   {
@@ -824,7 +824,7 @@ players.push(
     born: "1994-09-29",
     battingHand: "Right",
     totalMatches: 25,
-    currentTeam: "Gujarat Giants",
+    currentTeam: "GG",
     image: "",
   },
   {
@@ -857,7 +857,7 @@ players.push(
     born: "1997-08-24",
     battingHand: "Left",
     totalMatches: 140,
-    currentTeam: "UP Warriorz",
+    currentTeam: "UPW",
     image: "",
   },
   {
@@ -967,7 +967,7 @@ players.push(
     born: "1990-03-24",
     battingHand: "Right",
     totalMatches: 150,
-    currentTeam: "Sydney Sixers",
+    currentTeam: "UPW",
     image: "",
   },
   {
@@ -978,7 +978,7 @@ players.push(
     born: "1992-11-05",
     battingHand: "Left",
     totalMatches: 130,
-    currentTeam: "Brisbane Heat",
+    currentTeam: "DC",
     image: "",
   },
   {
@@ -989,7 +989,7 @@ players.push(
     born: "1995-11-22",
     battingHand: "Right",
     totalMatches: 40,
-    currentTeam: "Perth Scorchers",
+    currentTeam: "UPW",
     image: "",
   },
   {
@@ -1124,7 +1124,7 @@ players.push(
     born: "1997-10-04",
     battingHand: "Right",
     totalMatches: 40,
-    currentTeam: "Delhi Capitals",
+    currentTeam: "DC",
     image: "",
   },
   {
@@ -1146,7 +1146,7 @@ players.push(
     born: "1994-09-18",
     battingHand: "Right",
     totalMatches: 20,
-    currentTeam: "UP Warriorz",
+    currentTeam: "UPW",
     image: "",
   },
   {
@@ -1212,7 +1212,7 @@ players.push(
     born: "1992-08-20",
     battingHand: "Right",
     totalMatches: 180,
-    currentTeam: "Mumbai Indians",
+    currentTeam: "MI",
     image: "",
   },
   {
@@ -1410,7 +1410,7 @@ players.push(
     born: "1996-06-07",
     battingHand: "Right",
     totalMatches: 18,
-    currentTeam: "Gujarat Giants",
+    currentTeam: "GG",
     image: "",
   },
   {
