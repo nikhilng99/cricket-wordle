@@ -45,38 +45,38 @@ export default function GuessInput({ onGuess, players, value, setValue, inputRef
   };
 
   return (
-    <div style={{ position: "relative", width: "100%", maxWidth: "400px", margin: "0 auto" }}>
-      <div style={{ display: "flex", gap: "8px" }}>
-        <input
-          ref={inputRef}
-          type="text"
-          placeholder="Enter player name..."
-          value={value}
-          onChange={(e) => setValue(e.target.value)}
-          onKeyDown={handleKeyDown}
-          className="guess-input"
-        />
-        <button
-          className="guess-button"
-          onClick={() => handleSelect(value)}
-        >
-          Guess
-        </button>
-      </div>
+    <div className="sticky-input-wrapper">
+  <div style={{ display: "flex", gap: "8px" }}>
+    <input
+      ref={inputRef}
+      type="text"
+      placeholder="Enter player name..."
+      value={value}
+      onChange={(e) => setValue(e.target.value)}
+      onKeyDown={handleKeyDown}
+      className="guess-input"
+    />
+    <button
+      className="guess-button"
+      onClick={() => handleSelect(value)}
+    >
+      Guess
+    </button>
+  </div>
 
-      {filteredPlayers.length > 0 && (
-        <ul className="autocomplete-list">
-          {filteredPlayers.map((p, idx) => (
-            <li
-              key={p.name}
-              className={`autocomplete-item ${highlightIndex === idx ? "highlighted" : ""}`}
-              onClick={() => handleSelect(p.name)}
-            >
-              {p.name}
-            </li>
-          ))}
-        </ul>
-      )}
-    </div>
+  {filteredPlayers.length > 0 && (
+    <ul className="autocomplete-list">
+      {filteredPlayers.map((p, idx) => (
+        <li
+          key={p.name}
+          className={`autocomplete-item ${highlightIndex === idx ? "highlighted" : ""}`}
+          onClick={() => handleSelect(p.name)}
+        >
+          {p.name}
+        </li>
+      ))}
+    </ul>
+  )}
+</div>
   );
 }

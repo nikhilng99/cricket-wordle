@@ -10,7 +10,7 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 
 const MAX_ATTEMPTS = 8;
 const MAX_GAMES_PER_DAY = 3;
-const DISABLE_LIMIT = true;
+const DISABLE_LIMIT = false;
 
 function App() {
   const [mysteryPlayer, setMysteryPlayer] = useState(null);
@@ -130,7 +130,6 @@ function App() {
           <button className="how-to-play-button" onClick={() => setShowHowToPlay(true)}>How to Play</button>
         </div>
         <div className="contact-us">
-          <span>Contact Us: </span>
           <a href="https://www.instagram.com/wicket.wispers/" target="_blank"><i className="fab fa-instagram"></i></a>
           <a href="https://x.com/WicketWispers" target="_blank"><i className="fab fa-x-twitter"></i></a>
           <a href="https://www.linkedin.com/in/nikhil-n-g-48a7711a0/" target="_blank"><i className="fab fa-linkedin"></i></a>
@@ -169,18 +168,20 @@ function App() {
 
       {limitReached ? (
             <div className="overlay-message">
-              <p className="limit-text">
-                <strong>You've played {MAX_GAMES_PER_DAY} games today!</strong>
-              </p>
-              <p className="limit-text">
-                Next mystery player will be available in: <strong>{timeUntilReset}</strong>
-              </p>
-              <button
-                className="close-overlay-button"
-                onClick={() => setHideLimitMessage(true)}
-              >
-                Close ✖
-              </button>
+              <div className="limit-content">
+                <p className="limit-text">
+                  <strong>You've played {MAX_GAMES_PER_DAY} games today!</strong>
+                </p>
+                <p className="limit-text">
+                  Next mystery player will be available in: <strong>{timeUntilReset}</strong>
+                </p>
+                <button
+                  className="close-overlay-button"
+                  onClick={() => setHideLimitMessage(true)}
+                >
+                  Close ✖
+                </button>
+              </div>
             </div>
       ) : (
         <>
@@ -246,13 +247,21 @@ function App() {
         mysteryPlayer={mysteryPlayer}
         maxAttempts={MAX_ATTEMPTS}
       />
-
-      <footer>
-          <strong>Inspired by <a href="https://stumple.me/" target="_blank">Stumple</a>. Adapted for Women's Cricket.</strong>
-        <span className="developer-credit">
-  Made by <a href="https://www.linkedin.com/in/nikhil-n-g-48a7711a0/" target="_blank" rel="noopener noreferrer">Nikhil N G</a>
-</span>
+      <footer style={{ 
+          textAlign: "center", 
+          padding: "16px 8px", 
+          fontSize: "14px", 
+          color: "#555",
+          lineHeight: "1.5"
+      }}>
+        <div>
+          Inspired by <a href="https://stumple.me/" target="_blank" rel="noopener noreferrer" style={{ color: "#3949ab", textDecoration: "none" }}>Stumple</a>. Adapted for Women's Cricket.
+        </div>
+        <div style={{ fontWeight: "bold", marginTop: "4px" }}>
+          Made by <a href="https://www.linkedin.com/in/nikhil-n-g-48a7711a0/" target="_blank" rel="noopener noreferrer" style={{ color: "#3949ab", textDecoration: "none" }}>Nikhil N G</a>
+        </div>
       </footer>
+
     </div>
   );
 }

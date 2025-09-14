@@ -210,7 +210,7 @@ h1 {
 }
 
 .green { background-color: #6aaa64; color: white; }
-.orange { background-color: #f2a72d; color: white; }
+.orange { background-color: #f39c12; color: white; }
 .grey { background-color: #787c7e; color: white; }
 
 /* Hint arrows */
@@ -295,11 +295,26 @@ footer .developer-credit {
   font-weight: bold;
 }
 
+@keyframes fadeSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.guess-row {
+  animation: fadeSlideIn 0.3s ease forwards;
+}
+
 
 /* ---------- MOBILE FIX: Align header and guesses ---------- */
 @media (max-width: 600px) {
   .guess-grid-wrapper {
-    overflow-x: hidden;  /* No horizontal scroll */
+    overflow-x: visible;  /* No horizontal scroll */
     padding-bottom: 10px;
   }
 
@@ -359,6 +374,168 @@ footer .developer-credit {
     font-size: 9px; /* Adjust as needed */
   }
 }
+
+.sticky-input-wrapper {
+  position: sticky;      /* sticks while scrolling */
+  top: 10px;             /* distance from top */
+  z-index: 1000;         /* above other elements */
+  background: #fff;      /* match page background */
+  padding: 10px 0;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* subtle shadow */
+}
+
+/* Overlay close buttons */
+.overlay-message .copy-button,
+.close-overlay-button {
+  background-color: #3949ab;      /* nice blue */
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  transition: all 0.2s ease;
+}
+
+.overlay-message .copy-button:hover,
+.close-overlay-button:hover {
+  background-color: #5c6bc0;     /* lighter blue on hover */
+  transform: translateY(-2px);   /* subtle lift effect */
+}
+
+@media (max-width: 600px) {
+  .overlay-message .copy-button,
+  .close-overlay-button {
+    width: 100%;       /* full width on mobile */
+    text-align: center;
+  }
+}
+/* Mobile-specific adjustments for top bar */
+@media (max-width: 600px) {
+  .top-bar {
+    flex-direction: column;        /* Stack buttons vertically */
+    align-items: flex-start;       /* Align to left */
+    gap: 10px;                     /* Space between How to Play and Contact Us */
+    padding: 12px 16px 0 16px;     /* Add top padding so it's not crowded */
+  }
+
+  .top-bar .contact-us {
+    margin-top: 8px;               /* Extra spacing for easier clicking */
+    display: flex;
+    gap: 12px;                     /* Space between social icons */
+  }
+}
+/* Mobile-specific top bar adjustments */
+@media (max-width: 768px) {
+  .top-bar {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+  }
+
+  .contact-us {
+    order: 2; /* push it to the right */
+    display: flex;
+    gap: 12px;
+  }
+
+  .contact-us a {
+    font-size: 24px; /* bigger icons for easier tapping */
+    padding: 6px;
+  }
+
+  .how-to-play-button {
+    order: 1; /* left side */
+    font-size: 16px;
+    padding: 6px 12px;
+  }
+}
+
+/* Mobile-specific How to Play overlay adjustments */
+@media (max-width: 768px) {
+  .how-to-play-content {
+    position: fixed;          /* fix it on the screen */
+    top: 50%;                 /* center vertically */
+    left: 50%;                /* center horizontally */
+    transform: translate(-50%, -50%); /* true center */
+    width: 90%;               /* almost full width */
+    max-height: 90vh;         /* fit within screen height */
+    overflow-y: auto;         /* scroll if content is too tall */
+    padding: 20px;
+    border-radius: 12px;
+    background-color: #fff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    font-size: 14px;
+    z-index: 1000;
+  }
+
+  .how-to-play-content h2 {
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+
+  .how-to-play-content ul li {
+    margin-bottom: 10px;
+  }
+
+  .copy-button {
+    font-size: 16px;
+    padding: 10px 16px;
+    width: 100%;       /* full width for easy tapping */
+    margin-top: 10px;
+    border-radius: 8px;
+  }
+}
+/* Desktop Social Media Icon Size */
+@media (min-width: 769px) {
+  .contact-us a i {
+    font-size: 28px;  /* increase icon size */
+    margin-left: 12px; /* space between icons */
+    transition: transform 0.2s;
+  }
+
+  .contact-us a i:hover {
+    transform: scale(1.2); /* small hover zoom effect */
+    color: #3949ab;        /* optional hover color */
+  }
+}
+/* Center daily limit overlay on mobile */
+@media (max-width: 768px) {
+  .overlay-message {
+    display: flex;
+    justify-content: center;  /* horizontal center */
+    align-items: center;      /* vertical center */
+    padding: 10px;            /* some padding so it doesn’t touch edges */
+  }
+
+  .limit-content {
+    max-width: 90%;           /* almost full width */
+    width: 100%;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  }
+
+  .limit-text {
+    font-size: 18px;          /* readable on mobile */
+  }
+
+  .close-overlay-button {
+    width: 100%;              /* full width for easy tapping */
+    padding: 12px 20px;
+    font-size: 16px;
+    margin-top: 15px;
+  }
+}
+
+
 
 
 
