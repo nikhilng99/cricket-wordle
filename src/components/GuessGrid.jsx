@@ -12,18 +12,12 @@ function GuessGrid({ guesses, mysteryPlayer }) {
 
   const getCellColor = (guess, key) => {
     switch (key) {
-      case "name":
-        return guess.name === mysteryPlayer.name ? "green" : "grey";
-      case "nation":
-        return guess.nation === mysteryPlayer.nation ? "green" : "grey";
-      case "role":
-        return guess.role === mysteryPlayer.role ? "green" : "grey";
-      case "retired":
-        return guess.retired === mysteryPlayer.retired ? "green" : "grey";
-      case "battingHand":
-        return guess.battingHand === mysteryPlayer.battingHand ? "green" : "grey";
-      case "currentTeam":
-        return guess.currentTeam === mysteryPlayer.currentTeam ? "green" : "grey";
+      case "name": return guess.name === mysteryPlayer.name ? "green" : "grey";
+      case "nation": return guess.nation === mysteryPlayer.nation ? "green" : "grey";
+      case "role": return guess.role === mysteryPlayer.role ? "green" : "grey";
+      case "retired": return guess.retired === mysteryPlayer.retired ? "green" : "grey";
+      case "battingHand": return guess.battingHand === mysteryPlayer.battingHand ? "green" : "grey";
+      case "currentTeam": return guess.currentTeam === mysteryPlayer.currentTeam ? "green" : "grey";
       case "born": {
         const diff = Math.abs(new Date(guess.born).getFullYear() - new Date(mysteryPlayer.born).getFullYear());
         if (diff === 0) return "green";
@@ -36,21 +30,21 @@ function GuessGrid({ guesses, mysteryPlayer }) {
         if (diff <= 5) return "orange";
         return "grey";
       }
-      default:
-        return "grey";
+      default: return "grey";
     }
   };
 
   const getTooltip = (guess, key) => {
     switch (key) {
-      case "born":
-        const bornDiff = Math.abs(new Date(guess.born).getFullYear() - new Date(mysteryPlayer.born).getFullYear());
-        return bornDiff > 0 ? `Year difference: ${bornDiff}` : null;
-      case "totalMatches":
-        const matchDiff = Math.abs(guess.totalMatches - mysteryPlayer.totalMatches);
-        return matchDiff > 0 ? `Difference: ${matchDiff}` : null;
-      default:
-        return null; // No tooltip for other cells
+      case "born": {
+        const diff = Math.abs(new Date(guess.born).getFullYear() - new Date(mysteryPlayer.born).getFullYear());
+        return diff > 0 ? `Year difference: ${diff}` : null;
+      }
+      case "totalMatches": {
+        const diff = Math.abs(guess.totalMatches - mysteryPlayer.totalMatches);
+        return diff > 0 ? `Difference: ${diff}` : null;
+      }
+      default: return null;
     }
   };
 
@@ -69,6 +63,7 @@ function GuessGrid({ guesses, mysteryPlayer }) {
   return (
     <div className="guess-grid-wrapper">
       <div className="guess-grid">
+        {/* Header row */}
         <div className="guess-row header">
           <div className="guess-cell">Player Name</div>
           <div className="guess-cell">Nation</div>
@@ -80,6 +75,7 @@ function GuessGrid({ guesses, mysteryPlayer }) {
           <div className="guess-cell">Franchise Team</div>
         </div>
 
+        {/* Guesses */}
         {guesses.map((guess, index) => (
           <div key={index} className="guess-row">
             {renderCell(guess, "name", guess.name)}
