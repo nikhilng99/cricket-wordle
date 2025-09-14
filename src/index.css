@@ -210,16 +210,19 @@ h1 {
 }
 
 .green { background-color: #6aaa64; color: white; }
-.orange { background-color: #f39c12; color: white; }
+.orange { background-color: #f2a72d; color: white; }
 .grey { background-color: #787c7e; color: white; }
 
 /* Hint arrows */
 .orange-up,
 .orange-down {
-  color: orange !important;
+  color: rgb(249, 248, 248) !important;
   font-weight: bold;
   display: inline-block;
   margin-left: 2px;
+  font-weight: 1900;  /* make it bold */
+  font-size: 1.4em;  /* increase size */
+  line-height: 1;    /* keep them aligned */
 }
 
 /* ------------------ How to Play / Overlay ------------------ */
@@ -293,54 +296,69 @@ footer .developer-credit {
 }
 
 
-
+/* ---------- MOBILE FIX: Align header and guesses ---------- */
 @media (max-width: 600px) {
   .guess-grid-wrapper {
-    overflow-x: hidden;  /* disable horizontal scroll */
+    overflow-x: hidden;  /* No horizontal scroll */
     padding-bottom: 10px;
   }
 
+  /* Use identical grid structure for header and guesses */
+  .mobile-header,
   .guess-row {
     display: grid;
-    grid-template-rows: auto auto; /* first row: player name, second row: rest */
+    /* First row: Player Name full width
+       Second row: 7 equal columns */
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: auto auto;
     gap: 2px;
     width: 100%;
+    box-sizing: border-box;
   }
 
-  /* Player Name: full width */
+  /* Player Name spans full width on its own row */
+  .mobile-header > .guess-cell:first-child,
   .guess-row > .guess-cell:first-child {
     grid-column: 1 / -1;
-    text-align: left;
     font-weight: bold;
-    font-size: 16px;
-    background-color: #f5f5f5;
-    color: #333;
+    font-size: 15px;
     padding: 10px;
+    background-color: #f0f0f0;
+    color: #333;
+    text-align: left;
     border-radius: 4px;
-    min-height: 44px;
-    display: flex;
-    align-items: center;
   }
 
-  /* Remaining 7 cells */
+  /* Remaining cells go in equal columns */
+  .mobile-header > .guess-cell:not(:first-child),
   .guess-row > .guess-cell:not(:first-child) {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 13px;
-    padding: 6px 4px;
-    min-height: 40px;
-    white-space: normal;
-    overflow-wrap: break-word;
+    font-size: 9px;
+    padding: 4px 2px;
+    text-align: center;
+    word-break: break-word;
   }
 
-  /* Proportional widths for second row of guesses */
-  .guess-row:not(.header) > .guess-cell:nth-child(2) { flex: 1.5; } /* Nation */
-  .guess-row:not(.header) > .guess-cell:nth-child(3) { flex: 2; }   /* Role */
-  .guess-row:not(.header) > .guess-cell:nth-child(4) { flex: 1; }   /* Retired */
-  .guess-row:not(.header) > .guess-cell:nth-child(5) { flex: 1; }   /* Born */
-  .guess-row:not(.header) > .guess-cell:nth-child(6) { flex: 1; }   /* Batting Hand */
-  .guess-row:not(.header) > .guess-cell:nth-child(7) { flex: 1; }   /* Total Matches */
-  .guess-row:not(.header) > .guess-cell:nth-child(8) { flex: 1.2; } /* Franchise Team */
+  /* Optional: distinct background for header (except Player Name) */
+  .mobile-header > .guess-cell:not(:first-child) {
+    background: #bbdefb;
+    color: #0d47a1;
+    font-weight: 600;
+    border-radius: 4px;
+  }
+
+  /* Remove extra padding on mobile container */
+  .container {
+    padding: 2px;
+    margin: 0 auto;
+  }
 }
+@media (max-width: 600px) {
+  /* Target the Role column (3rd cell) in both header and guess rows */
+  .guess-row > .guess-cell:nth-child(3),
+  .mobile-header > .guess-cell:nth-child(3) {
+    font-size: 9px; /* Adjust as needed */
+  }
+}
+
+
 

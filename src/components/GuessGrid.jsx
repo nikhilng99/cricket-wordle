@@ -64,7 +64,7 @@ function GuessGrid({ guesses, mysteryPlayer }) {
     <div className="guess-grid-wrapper">
       <div className="guess-grid">
         {/* Header row */}
-        <div className="guess-row header">
+        <div className="guess-row header mobile-header">
           <div className="guess-cell">Player Name</div>
           <div className="guess-cell">Nation</div>
           <div className="guess-cell">Role</div>
@@ -72,7 +72,7 @@ function GuessGrid({ guesses, mysteryPlayer }) {
           <div className="guess-cell">Born</div>
           <div className="guess-cell">Batting Hand</div>
           <div className="guess-cell">Total Matches</div>
-          <div className="guess-cell">Franchise Team</div>
+          <div className="guess-cell">Team</div>
         </div>
 
         {/* Guesses */}
