@@ -54,7 +54,7 @@ function ShareModal({ show, onClose, guesses, mysteryPlayer, maxAttempts = 8 }) 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(shareText).then(() => {
       setCopied(true);
-      setTimeout(() => setCopied(false), 1500);
+      setTimeout(() => setCopied(false), 3000);
     });
   };
 

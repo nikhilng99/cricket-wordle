@@ -10,7 +10,7 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 
 const MAX_ATTEMPTS = 8;
 const MAX_GAMES_PER_DAY = 3;
-const DISABLE_LIMIT = true;
+const DISABLE_LIMIT = false;
 
 function App() {
   const [mysteryPlayer, setMysteryPlayer] = useState(null);
@@ -22,6 +22,8 @@ function App() {
   const [showHowToPlay, setShowHowToPlay] = useState(false);
   const [gamesPlayedToday, setGamesPlayedToday] = useState(0);
   const [timeUntilReset, setTimeUntilReset] = useState("");
+  const [hideLimitMessage, setHideLimitMessage] = useState(false);
+
 
   const inputRef = useRef(null);
 
@@ -82,8 +84,11 @@ function App() {
   };
 
   const handleGuess = (guessName) => {
-    if (showPlayer || guesses.length >= MAX_ATTEMPTS) return;
-    if (!DISABLE_LIMIT && gamesPlayedToday >= MAX_GAMES_PER_DAY) return;
+      // 🚨 Stop and show overlay if daily limit reached
+    if (!DISABLE_LIMIT && gamesPlayedToday >= MAX_GAMES_PER_DAY) {
+        setHideLimitMessage(false); // ensure overlay is visible again
+        return;
+    }
 
     const player = players.find(p => p.name.toLowerCase() === guessName.toLowerCase());
     if (!player) return alert("Player not found!");
@@ -112,7 +117,8 @@ function App() {
   if (!mysteryPlayer) return <div>Loading...</div>;
 
   const attemptsRemaining = MAX_ATTEMPTS - guesses.length;
-  const limitReached = !DISABLE_LIMIT && gamesPlayedToday >= MAX_GAMES_PER_DAY;
+  const limitReached = !DISABLE_LIMIT && gamesPlayedToday >= MAX_GAMES_PER_DAY && !hideLimitMessage;
+
 
   return (
     <div className="container">
@@ -133,15 +139,16 @@ function App() {
 
       {/* Title */}
       <h1>Women’s Cricket Wordle</h1>
+      <h2 className="subtitle">Guess the International Cricketer</h2>
 
       {showHowToPlay && (
         <div className="overlay-message" onClick={() => setShowHowToPlay(false)}>
           <div className="how-to-play-content" onClick={(e) => e.stopPropagation()}>
             <h2>How to Play</h2>
             <ul>
-              <li>Guess the mystery women cricket player!</li>
-              <li>Type the player's name in the search box and click "Guess".</li>
-              <li>You have 8 attempts per game to guess correctly.</li>
+              <li>Guess the mystery&nbsp; <strong> Women's Cricket Player!</strong></li>
+              <li>Type the player's name in the search box and click&nbsp; <strong>"Guess".</strong></li>
+              <li>You have <strong>&nbsp;8 attempts</strong>&nbsp;per game to guess correctly.</li>
               <li>Each guess will show hints on Nation, Role, Birth Year, etc.</li>
               <li>
                   Hints:
@@ -150,8 +157,8 @@ function App() {
                   <span style={{ backgroundColor: '#787c7e', color: 'white', padding: '2px 6px', margin: '0 4px', borderRadius: '4px' }}>Grey = Wrong</span>
               </li>
               <li style={{ color: "#555", fontStyle: "italic" }}>
-                Disclaimer: To ensure ease, not all current/retired players are included in the dataset. 
-                If you are trying to guess a player and the game won't allow it, they are not in our dataset.
+                  Disclaimer: For simplicity, not all current or retired players are included in the dataset.  
+                  If you attempt to guess a player and the game does not accept the name, that player is not part of our dataset.
               </li>
 
             </ul>
@@ -161,10 +168,20 @@ function App() {
       )}
 
       {limitReached ? (
-        <div className="overlay-message">
-          <h2>You've played {MAX_GAMES_PER_DAY} games today!</h2>
-          <p>Next mystery player will be available in: <strong>{timeUntilReset}</strong></p>
-        </div>
+            <div className="overlay-message">
+              <p className="limit-text">
+                <strong>You've played {MAX_GAMES_PER_DAY} games today!</strong>
+              </p>
+              <p className="limit-text">
+                Next mystery player will be available in: <strong>{timeUntilReset}</strong>
+              </p>
+              <button
+                className="close-overlay-button"
+                onClick={() => setHideLimitMessage(true)}
+              >
+                Close ✖
+              </button>
+            </div>
       ) : (
         <>
           <div className="attempts-info">

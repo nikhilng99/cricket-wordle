@@ -279,7 +279,7 @@ footer a:hover {
 }
 
 footer .developer-credit {
-  margin-left: 10px;
+  margin-left: 5px;
   font-weight: bold;
 }
 
@@ -413,3 +413,64 @@ footer .developer-credit {
   color: #d32f2f;
   text-align: center;
 }
+.overlay-message {
+  text-align: center;      /* Center all text */
+  padding: 20px;
+}
+
+.limit-text {
+  margin: 8px 0;           /* Small space between the lines */
+  font-size: 18px;
+  color: #333;
+}
+
+.overlay-message {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0,0,0,0.75);
+
+  /* Center content */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  padding: 20px;
+  z-index: 9999;
+  text-align: center;
+}
+
+.limit-text {
+  margin: 8px 0;
+  font-size: 18px;
+  color: #fff;            /* make sure text is visible on dark overlay */
+}
+
+.close-overlay-button {
+  display: block;
+  margin: 16px auto 0;
+  padding: 8px 20px;
+  background-color: #3949ab;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.close-overlay-button:hover {
+  background-color: #5c6bc0;
+}
+.subtitle {
+  font-size: 1.25rem;  /* slightly smaller than h1 */
+  font-weight: 500;
+  color: #555;         /* soft gray */
+  margin-top: -8px;    /* bring it closer to h1 */
+  margin-bottom: 16px; /* space before next content */
+  text-align: center;
+}
+
+
+
