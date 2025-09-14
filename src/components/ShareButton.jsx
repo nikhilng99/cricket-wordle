@@ -22,7 +22,7 @@ function ShareButton({ guesses, mysteryPlayer }) {
             if (player[field] !== mysteryPlayer[field]) return "🟨";
             return "⬜";
           })
-          .join("")
+          .join(""),
       )
       .join("\n");
 
@@ -42,9 +42,7 @@ function ShareButton({ guesses, mysteryPlayer }) {
     }
   };
 
-  return (
-    <button onClick={handleShare}>Share Emoji Grid</button>
-  );
+  return <button onClick={handleShare}>Share Emoji Grid</button>;
 }
 
 export default ShareButton;

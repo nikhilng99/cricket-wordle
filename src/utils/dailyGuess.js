@@ -19,7 +19,9 @@ export function timeLeftMs() {
   const lastGuessTime = localStorage.getItem("lastGuessTime");
   if (!lastGuessTime) return 0;
   const now = new Date();
-  const nextAvailableTime = new Date(new Date(lastGuessTime).getTime() + 24 * 60 * 60 * 1000);
+  const nextAvailableTime = new Date(
+    new Date(lastGuessTime).getTime() + 24 * 60 * 60 * 1000,
+  );
   const diff = nextAvailableTime - now;
   return diff > 0 ? diff : 0;
 }

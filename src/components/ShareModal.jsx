@@ -1,13 +1,19 @@
 import React, { useState } from "react";
 import "./ShareModal.css";
 
-function ShareModal({ show, onClose, guesses, mysteryPlayer, maxAttempts = 8 }) {
+function ShareModal({
+  show,
+  onClose,
+  guesses,
+  mysteryPlayer,
+  maxAttempts = 8,
+}) {
   const [copied, setCopied] = useState(false);
 
   if (!show) return null;
 
   const guessedCorrectly = guesses.some(
-    (player) => player.name === mysteryPlayer.name
+    (player) => player.name === mysteryPlayer.name,
   );
 
   const yearDiff = (date1, date2) => {
@@ -35,11 +41,14 @@ function ShareModal({ show, onClose, guesses, mysteryPlayer, maxAttempts = 8 }) 
             if (player[f] === mysteryPlayer[f]) return "🟩";
             if (f === "born" && yearDiff(player[f], mysteryPlayer[f]) <= 2)
               return "🟨";
-            if (f === "totalMatches" && Math.abs(player[f] - mysteryPlayer[f]) <= 5)
+            if (
+              f === "totalMatches" &&
+              Math.abs(player[f] - mysteryPlayer[f]) <= 5
+            )
               return "🟨";
             return "⬛";
           })
-          .join("")
+          .join(""),
       )
       .join("\n");
   };
@@ -52,10 +61,31 @@ function ShareModal({ show, onClose, guesses, mysteryPlayer, maxAttempts = 8 }) 
   const shareText = `Women's Cricket Wordle ${tries}/${maxAttempts}\n${getPattern()}\nCheck it out: ${window.location.href}`;
 
   const copyToClipboard = () => {
-    navigator.clipboard.writeText(shareText).then(() => {
-      setCopied(true);
+    const fallbackCopy = () => {
+      const textArea = document.createElement("textarea");
+      textArea.value = shareText;
+      document.body.appendChild(textArea);
+      textArea.select();
+      try {
+        document.execCommand("copy");
+        setCopied(true);
+      } catch (err) {
+        console.error("Fallback copy failed", err);
+      }
+      document.body.removeChild(textArea);
       setTimeout(() => setCopied(false), 3000);
-    });
+    };
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard
+        .writeText(shareText)
+        .then(() => setCopied(true))
+        .catch(() => fallbackCopy());
+    } else {
+      fallbackCopy();
+    }
+
+    setTimeout(() => setCopied(false), 3000);
   };
 
   return (
@@ -75,9 +105,13 @@ function ShareModal({ show, onClose, guesses, mysteryPlayer, maxAttempts = 8 }) 
 
         <pre className="pattern">{shareText}</pre>
 
-        <button onClick={copyToClipboard} className="copy-btn">
+        <button
+          onClick={copyToClipboard}
+          className={`copy-btn ${copied ? "copied" : ""}`}
+        >
           {copied ? "Copied!" : "Copy Link"}
         </button>
+
         <button onClick={onClose} className="close-btn">
           Close
         </button>

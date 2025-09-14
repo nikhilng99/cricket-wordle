@@ -14,6 +14,7 @@
     "autoprefixer": "^10.4.21",
     "gh-pages": "^6.3.0",
     "postcss": "^8.5.6",
+    "prettier": "^3.6.2",
     "vite": "^5.4.20"
   },
   "dependencies": {
@@ -24,7 +25,8 @@
     "framer-motion": "^10.12.16",
     "react": "^18.2.0",
     "react-confetti": "^6.4.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-world-flags": "^1.6.0"
   },
   "description": "This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.",
   "main": "eslint.config.js",

@@ -20,13 +20,13 @@ h1 {
   margin-bottom: 16px;
   color: #1a237e;
   text-align: center;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
 }
 
 @media (max-width: 600px) {
   h1 {
     font-size: 28px;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
   }
 }
 
@@ -83,7 +83,7 @@ h1 {
   object-fit: cover;
   border-radius: 50%;
   border: 3px solid #5c6bc0;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 /* ------------------ Input & Guess Button ------------------ */
@@ -102,12 +102,12 @@ h1 {
   width: 280px;
   outline: none;
   transition: all 0.3s ease;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 .guess-input:focus {
   border-color: #3949ab;
-  box-shadow: 0 0 8px rgba(63,81,181,0.4);
+  box-shadow: 0 0 8px rgba(63, 81, 181, 0.4);
 }
 
 .guess-button {
@@ -120,13 +120,13 @@ h1 {
   font-size: 16px;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
 
 .guess-button:hover {
   background: linear-gradient(135deg, #1a237e, #3949ab);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 /* ------------------ Autocomplete Dropdown ------------------ */
@@ -143,7 +143,7 @@ h1 {
   z-index: 100;
   padding: 0;
   margin-top: 4px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .autocomplete-item {
@@ -193,7 +193,7 @@ h1 {
   font-size: 14px;
   border: 1px solid #90caf9;
   border-radius: 6px 6px 0 0;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 .guess-cell {
@@ -209,9 +209,18 @@ h1 {
   overflow-wrap: break-word;
 }
 
-.green { background-color: #6aaa64; color: white; }
-.orange { background-color: #f39c12; color: white; }
-.grey { background-color: #787c7e; color: white; }
+.green {
+  background-color: #6aaa64;
+  color: white;
+}
+.orange {
+  background-color: #f39c12;
+  color: white;
+}
+.grey {
+  background-color: #787c7e;
+  color: white;
+}
 
 /* Hint arrows */
 .orange-up,
@@ -220,15 +229,18 @@ h1 {
   font-weight: bold;
   display: inline-block;
   margin-left: 2px;
-  font-weight: 1900;  /* make it bold */
-  font-size: 1.4em;  /* increase size */
-  line-height: 1;    /* keep them aligned */
+  font-weight: 1900; /* make it bold */
+  font-size: 1.4em; /* increase size */
+  line-height: 1; /* keep them aligned */
 }
 
 /* ------------------ How to Play / Overlay ------------------ */
 .overlay-message {
   position: fixed;
-  top: 0; left: 0; width: 100%; height: 100%;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background-color: rgba(0, 0, 0, 0.7);
   color: #fff;
   display: flex;
@@ -247,7 +259,7 @@ h1 {
   max-width: 500px;
   width: 90%;
   text-align: left;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
 .how-to-play-content h2 {
@@ -310,11 +322,10 @@ footer .developer-credit {
   animation: fadeSlideIn 0.3s ease forwards;
 }
 
-
 /* ---------- MOBILE FIX: Align header and guesses ---------- */
 @media (max-width: 600px) {
   .guess-grid-wrapper {
-    overflow-x: visible;  /* No horizontal scroll */
+    overflow-x: visible; /* No horizontal scroll */
     padding-bottom: 10px;
   }
 
@@ -337,11 +348,21 @@ footer .developer-credit {
     grid-column: 1 / -1;
     font-weight: bold;
     font-size: 15px;
-    padding: 10px;
+    padding: 8px;
     background-color: #f0f0f0;
     color: #333;
     text-align: left;
     border-radius: 4px;
+  }
+
+  @media (max-width: 600px) {
+    /* Reduce the full-width player name block height on phones */
+    .mobile-header > .guess-cell:first-child,
+    .guess-row > .guess-cell:first-child {
+      padding: 4px 6px; /* smaller vertical & horizontal padding */
+      font-size: 12px; /* smaller text size */
+      line-height: 1.2; /* tighter line spacing */
+    }
   }
 
   /* Remaining cells go in equal columns */
@@ -376,21 +397,21 @@ footer .developer-credit {
 }
 
 .sticky-input-wrapper {
-  position: sticky;      /* sticks while scrolling */
-  top: 10px;             /* distance from top */
-  z-index: 1000;         /* above other elements */
-  background: #fff;      /* match page background */
+  position: sticky; /* sticks while scrolling */
+  top: 10px; /* distance from top */
+  z-index: 1000; /* above other elements */
+  background: #fff; /* match page background */
   padding: 10px 0;
   width: 100%;
   max-width: 400px;
   margin: 0 auto;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* subtle shadow */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* subtle shadow */
 }
 
 /* Overlay close buttons */
 .overlay-message .copy-button,
 .close-overlay-button {
-  background-color: #3949ab;      /* nice blue */
+  background-color: #3949ab; /* nice blue */
   color: white;
   border: none;
   padding: 8px 16px;
@@ -398,36 +419,36 @@ footer .developer-credit {
   font-size: 14px;
   font-weight: bold;
   cursor: pointer;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
   transition: all 0.2s ease;
 }
 
 .overlay-message .copy-button:hover,
 .close-overlay-button:hover {
-  background-color: #5c6bc0;     /* lighter blue on hover */
-  transform: translateY(-2px);   /* subtle lift effect */
+  background-color: #5c6bc0; /* lighter blue on hover */
+  transform: translateY(-2px); /* subtle lift effect */
 }
 
 @media (max-width: 600px) {
   .overlay-message .copy-button,
   .close-overlay-button {
-    width: 100%;       /* full width on mobile */
+    width: 100%; /* full width on mobile */
     text-align: center;
   }
 }
 /* Mobile-specific adjustments for top bar */
 @media (max-width: 600px) {
   .top-bar {
-    flex-direction: column;        /* Stack buttons vertically */
-    align-items: flex-start;       /* Align to left */
-    gap: 10px;                     /* Space between How to Play and Contact Us */
-    padding: 12px 16px 0 16px;     /* Add top padding so it's not crowded */
+    flex-direction: column; /* Stack buttons vertically */
+    align-items: flex-start; /* Align to left */
+    gap: 10px; /* Space between How to Play and Contact Us */
+    padding: 12px 16px 0 16px; /* Add top padding so it's not crowded */
   }
 
   .top-bar .contact-us {
-    margin-top: 8px;               /* Extra spacing for easier clicking */
+    margin-top: 8px; /* Extra spacing for easier clicking */
     display: flex;
-    gap: 12px;                     /* Space between social icons */
+    gap: 12px; /* Space between social icons */
   }
 }
 /* Mobile-specific top bar adjustments */
@@ -460,17 +481,17 @@ footer .developer-credit {
 /* Mobile-specific How to Play overlay adjustments */
 @media (max-width: 768px) {
   .how-to-play-content {
-    position: fixed;          /* fix it on the screen */
-    top: 50%;                 /* center vertically */
-    left: 50%;                /* center horizontally */
+    position: fixed; /* fix it on the screen */
+    top: 50%; /* center vertically */
+    left: 50%; /* center horizontally */
     transform: translate(-50%, -50%); /* true center */
-    width: 90%;               /* almost full width */
-    max-height: 90vh;         /* fit within screen height */
-    overflow-y: auto;         /* scroll if content is too tall */
+    width: 90%; /* almost full width */
+    max-height: 90vh; /* fit within screen height */
+    overflow-y: auto; /* scroll if content is too tall */
     padding: 20px;
     border-radius: 12px;
     background-color: #fff;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
     font-size: 14px;
     z-index: 1000;
   }
@@ -487,7 +508,7 @@ footer .developer-credit {
   .copy-button {
     font-size: 16px;
     padding: 10px 16px;
-    width: 100%;       /* full width for easy tapping */
+    width: 100%; /* full width for easy tapping */
     margin-top: 10px;
     border-radius: 8px;
   }
@@ -495,47 +516,76 @@ footer .developer-credit {
 /* Desktop Social Media Icon Size */
 @media (min-width: 769px) {
   .contact-us a i {
-    font-size: 28px;  /* increase icon size */
+    font-size: 28px; /* increase icon size */
     margin-left: 12px; /* space between icons */
     transition: transform 0.2s;
   }
 
   .contact-us a i:hover {
     transform: scale(1.2); /* small hover zoom effect */
-    color: #3949ab;        /* optional hover color */
+    color: #3949ab; /* optional hover color */
   }
 }
 /* Center daily limit overlay on mobile */
 @media (max-width: 768px) {
   .overlay-message {
     display: flex;
-    justify-content: center;  /* horizontal center */
-    align-items: center;      /* vertical center */
-    padding: 10px;            /* some padding so it doesn’t touch edges */
+    justify-content: center; /* horizontal center */
+    align-items: center; /* vertical center */
+    padding: 10px; /* some padding so it doesn’t touch edges */
   }
 
   .limit-content {
-    max-width: 90%;           /* almost full width */
+    max-width: 90%; /* almost full width */
     width: 100%;
     padding: 20px;
     border-radius: 12px;
     text-align: center;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
   }
 
   .limit-text {
-    font-size: 18px;          /* readable on mobile */
+    font-size: 18px; /* readable on mobile */
   }
 
   .close-overlay-button {
-    width: 100%;              /* full width for easy tapping */
+    width: 100%; /* full width for easy tapping */
     padding: 12px 20px;
     font-size: 16px;
     margin-top: 15px;
   }
 }
 
+@media (max-width: 600px) {
+  /* Make player/silhouette images smaller on phones */
+  .player-image {
+    width: 90px; /* shrink width */
+    height: 90px; /* shrink height */
+    border-width: 2px; /* thinner border to match new size */
+  }
+}
+@media (max-width: 600px) {
+  /* Reduce overall spacing to push content up */
+  h1 {
+    margin-bottom: 8px; /* tighten space below title */
+  }
 
+  .player-image-container {
+    margin-top: 8px; /* less top margin above image */
+    margin-bottom: 12px; /* adjust bottom spacing as needed */
+  }
 
+  .guess-grid {
+    margin-top: 10px; /* pull grid closer to image */
+  }
 
-
+  .container {
+    padding-top: 8px; /* reduce top padding on container */
+  }
+}
+.flag {
+  font-family:
+    "Segoe UI Emoji", "Apple Color Emoji", "Noto Color Emoji", sans-serif;
+  font-size: 16px; /* adjust as needed */
+  margin-right: 4px;
+}

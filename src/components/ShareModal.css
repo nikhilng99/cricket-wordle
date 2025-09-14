@@ -55,7 +55,6 @@
   transform: translateY(-2px);
 }
 
-
 .close-btn {
   background-color: #787c7e; /* grey */
   color: #fff;
@@ -87,4 +86,66 @@
 /* Strong text styling */
 .modal strong {
   color: #222;
+}
+
+/* MOBILE FIXES */
+@media (max-width: 600px) {
+  .modal {
+    width: 95%; /* almost full screen */
+    max-width: none; /* remove desktop max-width */
+    padding: 15px 10px; /* smaller padding */
+    gap: 10px;
+    box-sizing: border-box;
+  }
+
+  .copy-btn,
+  .close-btn {
+    width: 100%; /* full-width buttons */
+    padding: 12px; /* bigger tappable area */
+    font-size: 14px;
+    box-sizing: border-box;
+  }
+
+  .pattern {
+    font-size: 12px; /* smaller font for mobile */
+    padding: 8px;
+    white-space: pre-wrap; /* wrap long text */
+    word-break: break-word; /* break long words/URLs */
+  }
+
+  .modal p {
+    font-size: 0.9rem;
+  }
+}
+
+/* Optional: Copied feedback animation */
+.copy-btn.copied {
+  background-color: #4caf50 !important;
+  transition: background-color 0.3s ease;
+}
+/* MOBILE COPIED BUTTON */
+@media (max-width: 600px) {
+  .copy-btn.copied {
+    background-color: #3949ab !important; /* blue */
+    color: white !important;
+  }
+
+  /* Make button full width and easy to tap */
+  .copy-btn {
+    width: 100%;
+    padding: 14px;
+    font-size: 14px;
+    box-sizing: border-box;
+  }
+
+  /* Remove hover effect on touch devices */
+  .copy-btn:hover {
+    transform: none;
+  }
+}
+@media (max-width: 600px) {
+  .copy-btn.copied {
+    background-color: #3949ab !important; /* blue */
+    color: white !important;
+  }
 }
