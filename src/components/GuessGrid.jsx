@@ -134,7 +134,7 @@ function GuessGrid({ guesses, mysteryPlayer }) {
               >
                 {guess.nation === "West Indies" ? (
                   <img
-                    src="/images/west-indies.png"
+                    src="images/west-indies.png"
                     alt="West Indies Flag"
                     style={{ width: "6vw", maxWidth: 40, height: "auto" }}
                   />
