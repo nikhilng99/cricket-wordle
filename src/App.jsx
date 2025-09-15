@@ -9,7 +9,7 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 
 const MAX_ATTEMPTS = 8;
 const MAX_GAMES_PER_DAY = 3;
-const DISABLE_LIMIT = true;
+const DISABLE_LIMIT = false;
 
 function App() {
   const [mysteryPlayer, setMysteryPlayer] = useState(null);
